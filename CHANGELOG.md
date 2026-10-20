@@ -3,6 +3,14 @@
 All notable changes to this plugin. The version is the one in `manifest.json`,
 which the host records per installation.
 
+## 0.4.2
+
+- Rename the build output and release assets to `silo-plugin-shoko`, so a
+  download is not called `plugin`. No functional change: Silo renames the
+  installed binary to `plugin` regardless.
+- README documents installing into a Silo Docker container, including picking
+  the asset that matches the container's architecture.
+
 ## 0.4.1
 
 - Fix the connection test: the form posted to an absolute path and landed on the

@@ -37,10 +37,10 @@ advertise those capabilities, so Silo shows no toggle for them.
 ```sh
 git clone https://github.com/Baine/Silo.Provider.Shoko
 cd Silo.Provider.Shoko
-make build          # produces ./plugin
+make build          # produces ./silo-plugin-shoko
 ```
 
-Upload `./plugin` in Silo under **Admin → Plugins → Upload**, then:
+Upload `./silo-plugin-shoko` in Silo under **Admin → Plugins → Upload**, then:
 
 1. Open the plugin's settings and enter the Shoko server URL, for example
    `http://shoko:8111`, and the episode numbering your libraries use.
@@ -57,8 +57,8 @@ for the container:
 
 | Container | Asset |
 | --- | --- |
-| x86_64 host (`uname -m` → `x86_64`) | `plugin-<version>-linux-amd64` |
-| ARM host (`aarch64`, Raspberry Pi, many NAS) | `plugin-<version>-linux-arm64` |
+| x86_64 host (`uname -m` → `x86_64`) | `silo-plugin-shoko_<version>_linux_amd64` |
+| ARM host (`aarch64`, Raspberry Pi, many NAS) | `silo-plugin-shoko_<version>_linux_arm64` |
 
 ```sh
 docker exec silo uname -m
@@ -188,14 +188,14 @@ rather than retried, and appears as a count in the run's warnings.
 ## Development
 
 ```sh
-make build   # ./plugin, the file Silo installs
+make build   # ./silo-plugin-shoko, the file Silo installs
 make test
 make check   # vet + tests
 make dist    # cross-compiled release binaries
 ```
 
 The plugin embeds `manifest.json` and stamps the running binary's SHA-256 into
-it, so the host verifies the checksum it is handed. `./plugin manifest` prints
+it, so the host verifies the checksum it is handed. `./silo-plugin-shoko manifest` prints
 the manifest exactly as the host reads it.
 
 See [docs/architecture.md](docs/architecture.md) for the RPC surface and the

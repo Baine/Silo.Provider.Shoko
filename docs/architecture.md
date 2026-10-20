@@ -20,7 +20,7 @@ Silo host ──gRPC──▶ plugin ──HTTP──▶ Shoko Server /api/v3
 | `HTTPRoutes` | the admin connection-test page |
 
 The checksum in the manifest is overwritten at startup with the SHA-256 of the
-running binary, because the host verifies it before installing. `./plugin
+running binary, because the host verifies it before installing. `./silo-plugin-shoko
 manifest` prints the result.
 
 ## Configuration plumbing
