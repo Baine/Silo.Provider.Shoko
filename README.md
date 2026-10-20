@@ -49,8 +49,8 @@ Upload `./plugin` in Silo under **Admin → Plugins → Upload**, then:
 3. Run **Sync now** once to pull the existing history. After that it runs
    hourly.
 
-Prebuilt binaries are not published; `make build` cross-compiles with
-`make dist` if you need another platform.
+Prebuilt binaries are not published. `make dist` cross-compiles linux/amd64,
+linux/arm64 and darwin/arm64 into `dist/`.
 
 ## Configuration
 
