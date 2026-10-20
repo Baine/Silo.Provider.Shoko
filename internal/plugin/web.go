@@ -11,7 +11,7 @@ import (
 
 	pluginv1 "github.com/Silo-Server/silo-plugin-sdk/pkg/pluginproto/silo/plugin/v1"
 
-	"github.com/Baine/Silo.Provider.Shoko/internal/shoko"
+	"github.com/Baine/silo-plugin-shoko/internal/shoko"
 )
 
 // connectionTestPath is the single route the manifest advertises. The host

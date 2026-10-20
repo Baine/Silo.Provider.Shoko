@@ -14,7 +14,7 @@ import (
 	publicmanifest "github.com/Silo-Server/silo-plugin-sdk/pkg/pluginsdk/manifest"
 	sdkruntime "github.com/Silo-Server/silo-plugin-sdk/pkg/pluginsdk/runtime"
 
-	"github.com/Baine/Silo.Provider.Shoko/internal/plugin"
+	"github.com/Baine/silo-plugin-shoko/internal/plugin"
 )
 
 //go:embed manifest.json

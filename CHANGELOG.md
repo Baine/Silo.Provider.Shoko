@@ -10,6 +10,8 @@ which the host records per installation.
   installed binary to `plugin` regardless.
 - README documents installing into a Silo Docker container, including picking
   the asset that matches the container's architecture.
+- Repository and Go module renamed to `silo-plugin-shoko`; publisher shown as
+  Baine.
 
 ## 0.4.1
 

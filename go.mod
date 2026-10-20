@@ -1,4 +1,4 @@
-module github.com/Baine/Silo.Provider.Shoko
+module github.com/Baine/silo-plugin-shoko
 
 go 1.26.0
 

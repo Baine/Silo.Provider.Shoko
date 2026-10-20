@@ -22,7 +22,7 @@ import (
 	"google.golang.org/protobuf/types/known/structpb"
 	"google.golang.org/protobuf/types/known/timestamppb"
 
-	"github.com/Baine/Silo.Provider.Shoko/internal/shoko"
+	"github.com/Baine/silo-plugin-shoko/internal/shoko"
 )
 
 const (

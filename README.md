@@ -1,6 +1,6 @@
-# Silo.Provider.Shoko
+# silo-plugin-shoko
 
-[![CI](https://github.com/Baine/Silo.Provider.Shoko/actions/workflows/ci.yml/badge.svg)](https://github.com/Baine/Silo.Provider.Shoko/actions/workflows/ci.yml)
+[![CI](https://github.com/Baine/silo-plugin-shoko/actions/workflows/ci.yml/badge.svg)](https://github.com/Baine/silo-plugin-shoko/actions/workflows/ci.yml)
 
 A [Silo](https://github.com/Silo-Server/silo-server) plugin that keeps watch
 state in step with a [Shoko Server](https://shokoanime.com) library. It
@@ -35,8 +35,8 @@ advertise those capabilities, so Silo shows no toggle for them.
 ## Install
 
 ```sh
-git clone https://github.com/Baine/Silo.Provider.Shoko
-cd Silo.Provider.Shoko
+git clone https://github.com/Baine/silo-plugin-shoko
+cd silo-plugin-shoko
 make build          # produces ./silo-plugin-shoko
 ```
 
@@ -74,7 +74,7 @@ container name on a shared Docker network, or the Shoko hostname — whichever t
 Silo container can reach.
 
 Prebuilt binaries are published only for the versions tagged in
-[releases](https://github.com/Baine/Silo.Provider.Shoko/releases). `make dist`
+[releases](https://github.com/Baine/silo-plugin-shoko/releases). `make dist`
 cross-compiles linux/amd64, linux/arm64 and darwin/arm64 into `dist/` yourself.
 
 ## Configuration

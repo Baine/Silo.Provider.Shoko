@@ -9,7 +9,7 @@
     "summary": "Keeps watched episodes in step with a Shoko Server library.",
     "description_markdown": "Shoko Server records which episodes you have finished watching. This provider imports that history into Silo and writes Silo's watched and unwatched actions back to the same Shoko episode records.",
     "setup_markdown": "1. In Shoko Server, open **Settings \u2192 API Keys** and create a key for the user whose history you want to sync.\n2. Open this plugin's settings and enter the Shoko server URL, as reachable from the Silo server, plus the episode numbering your libraries use.\n3. Under **Settings \u2192 Watch Providers**, choose **Shoko Server** and paste the API key to link your account.\n4. Run **Sync now** once to import the existing history. It syncs hourly after that.",
-    "publisher_name": "Silo.Provider.Shoko",
+    "publisher_name": "Baine",
     "license_spdx": "MIT"
   },
   "global_config_schema": [
