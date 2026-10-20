@@ -29,4 +29,5 @@ jobs:
         run: make build
 
       - name: Manifest is well formed
-        run: ./plugin manifest | grep -q '"siloApiVersion": "v1"'
+        run: |
+          ./plugin manifest | grep -q '"siloApiVersion": "v1"'
