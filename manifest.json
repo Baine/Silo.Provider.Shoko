@@ -1,0 +1,111 @@
+{
+  "plugin_id": "shoko-watch-state",
+  "version": "0.4.1",
+  "checksum": "__CHECKSUM__",
+  "silo_api_version": "v1",
+  "category": "Integrations",
+  "presentation": {
+    "display_name": "Shoko Watch State",
+    "summary": "Keeps watched episodes in step with a Shoko Server library.",
+    "description_markdown": "Shoko Server records which episodes you have finished watching. This provider imports that history into Silo and writes Silo's watched and unwatched actions back to the same Shoko episode records.",
+    "setup_markdown": "1. In Shoko Server, open **Settings \u2192 API Keys** and create a key for the user whose history you want to sync.\n2. Open this plugin's settings and enter the Shoko server URL, as reachable from the Silo server, plus the episode numbering your libraries use.\n3. Under **Settings \u2192 Watch Providers**, choose **Shoko Server** and paste the API key to link your account.\n4. Run **Sync now** once to import the existing history. It syncs hourly after that.",
+    "publisher_name": "Silo.Provider.Shoko",
+    "license_spdx": "MIT"
+  },
+  "global_config_schema": [
+    {
+      "key": "shoko",
+      "title": "Shoko Server",
+      "description": "Where the Shoko Server API is reachable from the Silo server.",
+      "required": true,
+      "json_schema": "{\"type\":\"object\",\"properties\":{\"base_url\":{\"type\":\"string\",\"title\":\"Shoko server URL\",\"description\":\"Base URL of the Shoko Server API, for example http://shoko:8111\",\"format\":\"uri\"},\"numbering\":{\"type\":\"string\",\"title\":\"Episode numbering\",\"description\":\"Which numbering the watched episodes carry. Use TMDB seasons when your Silo libraries are numbered by TMDB or TVDB, and AniDB when they follow AniDB absolute order.\",\"enum\":[\"anidb\",\"tmdb\"],\"default\":\"anidb\"}},\"required\":[\"base_url\"],\"additionalProperties\":false}",
+      "admin_form": {
+        "submit_label": "Save",
+        "fields": [
+          {
+            "key": "base_url",
+            "label": "Shoko server URL",
+            "description": "Base URL of the Shoko Server API as the Silo server sees it.",
+            "control": "ADMIN_FORM_CONTROL_TEXT",
+            "placeholder": "http://shoko:8111",
+            "required": true,
+            "validation": {
+              "pattern": "^https?://[^\\s]+$"
+            }
+          },
+          {
+            "key": "numbering",
+            "label": "Episode numbering",
+            "description": "Use AniDB absolute numbering when the Silo libraries follow the ShokoRelay VFS layout.",
+            "control": "ADMIN_FORM_CONTROL_SELECT",
+            "default_value": "anidb",
+            "options": [
+              {
+                "value": "anidb",
+                "label": "AniDB absolute",
+                "description": "Season 1, numbered as AniDB orders the episodes; specials as season 0."
+              },
+              {
+                "value": "tmdb",
+                "label": "TMDB seasons",
+                "description": "The season and episode numbers TMDB uses. Needs TMDB links in Shoko and makes each sync slower."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "capabilities": [
+    {
+      "type": "watch_sync_provider.v1",
+      "id": "shoko",
+      "display_name": "Shoko Server",
+      "description": "Imports finished episodes from Shoko Server and stores Silo's watched state back into Shoko.",
+      "watch_sync_provider": {
+        "auth_methods": [
+          "WATCH_SYNC_AUTH_METHOD_API_KEY"
+        ],
+        "export_watched": true,
+        "export_unwatched": true,
+        "import_watched": true,
+        "import_progress": true,
+        "scrobble_playback": true,
+        "supported_media_types": [
+          "WATCH_SYNC_MEDIA_TYPE_MOVIE",
+          "WATCH_SYNC_MEDIA_TYPE_EPISODE"
+        ],
+        "external_id_namespaces": [
+          "shoko",
+          "tvdb",
+          "tmdb",
+          "imdb"
+        ],
+        "max_batch_size": 100
+      }
+    },
+    {
+      "type": "http_routes.v1",
+      "id": "web",
+      "display_name": "Shoko connection test",
+      "description": "Checks that the configured Shoko server answers and that an API key is accepted."
+    }
+  ],
+  "http_routes": [
+    {
+      "id": "connection-test",
+      "method": "GET",
+      "path": "/connection-test",
+      "access": "admin",
+      "navigable": true,
+      "navigation_label": "Shoko connection",
+      "navigation_kind": "admin"
+    },
+    {
+      "id": "connection-test-submit",
+      "method": "POST",
+      "path": "/connection-test",
+      "access": "admin"
+    }
+  ]
+}

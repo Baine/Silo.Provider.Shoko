@@ -1,0 +1,6 @@
+/plugin
+/dist
+/silo-server
+/silo-plugin-sdk
+*.test
+.DS_Store
