@@ -49,8 +49,33 @@ Upload `./plugin` in Silo under **Admin → Plugins → Upload**, then:
 3. Run **Sync now** once to pull the existing history. After that it runs
    hourly.
 
-Prebuilt binaries are not published. `make dist` cross-compiles linux/amd64,
-linux/arm64 and darwin/arm64 into `dist/`.
+### Silo in Docker
+
+Silo executes the plugin inside its own container, so the binary has to match
+that container's OS and architecture, not your desktop's. Take the release asset
+for the container:
+
+| Container | Asset |
+| --- | --- |
+| x86_64 host (`uname -m` → `x86_64`) | `plugin-<version>-linux-amd64` |
+| ARM host (`aarch64`, Raspberry Pi, many NAS) | `plugin-<version>-linux-arm64` |
+
+```sh
+docker exec silo uname -m
+```
+
+Release binaries are built with `CGO_ENABLED=0`, so they are static and run on
+Alpine-based images without extra libraries. Upload the file under
+**Admin → Plugins → Upload**.
+
+The server URL is resolved *inside* the container. `http://localhost:8111` points
+at the Silo container itself, not at Shoko, so use the host's LAN address, a
+container name on a shared Docker network, or the Shoko hostname — whichever the
+Silo container can reach.
+
+Prebuilt binaries are published only for the versions tagged in
+[releases](https://github.com/Baine/Silo.Provider.Shoko/releases). `make dist`
+cross-compiles linux/amd64, linux/arm64 and darwin/arm64 into `dist/` yourself.
 
 ## Configuration
 
